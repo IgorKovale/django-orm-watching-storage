@@ -42,17 +42,17 @@ def get_duration(visit):
 
 
 def format_duration(delta):
-    seconds = delta.total_seconds()
-    hours = seconds//3600
-    minutes = (seconds%3600)//60
-    duration = f'{int(hours):02}ч {int(minutes):02}мин'
+    total_seconds = delta.total_seconds()
+    hours_in_store = total_seconds//3600
+    minutes_in_store = (total_seconds%3600)//60
+    duration = f'{int(hours_in_store):02}ч {int(minutes_in_store):02}мин'
     return duration
 
 
 def is_visit_long(visit):
     delta = get_duration(visit)
     seconds = delta.total_seconds()
-    minutes = seconds/60
-    is_visit_long = minutes > 60
+    total_minutes = seconds/60
+    is_visit_long = total_minutes > 60
     return is_visit_long
     
