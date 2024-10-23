@@ -33,7 +33,7 @@ class Visit(models.Model):
 
 def get_duration(visit):
     enter_time = django.utils.timezone.localtime(visit.entered_at)
-    if visit.leaved_at == None:
+    if not visit.leaved_at:
         end_of_visit = django.utils.timezone.localtime()
     else:
         end_of_visit = visit.leaved_at
