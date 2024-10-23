@@ -29,7 +29,7 @@ class Visit(models.Model):
                 if self.leaved_at else 'not leaved'
             )
         )
-    
+
 
 def get_duration(visit):
     enter_time = django.utils.timezone.localtime(visit.entered_at)
@@ -37,14 +37,14 @@ def get_duration(visit):
         end_of_visit = django.utils.timezone.localtime()
     else:
         end_of_visit = visit.leaved_at
-    delta = end_of_visit-enter_time  
+    delta = end_of_visit - enter_time
     return delta
 
 
 def format_duration(delta):
     total_seconds = delta.total_seconds()
     hours_in_store = total_seconds//3600
-    minutes_in_store = (total_seconds%3600)//60
+    minutes_in_store = (total_seconds % 3600)//60
     duration = f'{int(hours_in_store):02}ч {int(minutes_in_store):02}мин'
     return duration
 
@@ -55,4 +55,5 @@ def is_visit_long(visit):
     total_minutes = seconds/60
     is_visit_long = total_minutes > 60
     return is_visit_long
+
     
